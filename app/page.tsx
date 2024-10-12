@@ -1,9 +1,15 @@
 // pages/index.tsx
 
 import React from "react";
-import { ArrowRightIcon, ChatBubbleBottomCenterTextIcon, UserGroupIcon, AcademicCapIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  ChatBubbleBottomCenterTextIcon,
+  UserGroupIcon,
+  AcademicCapIcon,
+  RocketLaunchIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
-
+import { ShipIcon } from "lucide-react";
 
 /**
  * Main landing page component
@@ -36,9 +42,9 @@ export default function Home(): JSX.Element {
             link="/team-matching"
           />
           <FeatureCard
-            title="AI-Powered Chatbot"
-            description="Ask me anything!"
-            icon={<ChatBubbleBottomCenterTextIcon className="h-8 w-8 text-purple-400" />}
+            title="PortPal"
+            description="Ask me anything! Retrieval-Augmented Generation AI Chatbot for Port of Singapore Authority."
+            icon={<ShipIcon className="h-8 w-8 text-purple-400" />}
             link="/chatbot"
           />
           <FeatureCard
@@ -62,7 +68,17 @@ export default function Home(): JSX.Element {
  * @param {string} props.link - Link to the feature page
  * @returns JSX.Element
  */
-function FeatureCard({ title, description, icon, link }: { title: string; description: string; icon: JSX.Element; link: string }): JSX.Element {
+function FeatureCard({
+  title,
+  description,
+  icon,
+  link,
+}: {
+  title: string;
+  description: string;
+  icon: JSX.Element;
+  link: string;
+}): JSX.Element {
   return (
     <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-6 shadow-lg backdrop-filter backdrop-blur-lg transition-all duration-300 hover:scale-105 animate-fadeInUp">
       <div className="flex items-center mb-4">
