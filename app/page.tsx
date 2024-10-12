@@ -5,6 +5,7 @@ import { ArrowRightIcon, ChatBubbleBottomCenterTextIcon, UserGroupIcon, Academic
 import Link from "next/link";
 
 
+
 /**
  * Main landing page component
  * @returns JSX.Element
