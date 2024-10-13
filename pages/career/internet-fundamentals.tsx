@@ -1,83 +1,83 @@
 'use client'
 
-import { useState, useEffect } from "react";
-import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
-import confetti from "canvas-confetti";
-import { useRouter } from "next/router";
-import "../../app/globals.css";
-import React from "react";
+import { useState, useEffect } from 'react'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import confetti from 'canvas-confetti'
+import { useRouter } from 'next/router'
+import '../../app/globals.css'
+import React from 'react'
 
 // Simulated AI-generated questions
 const quizQuestions = [
   {
-    question: "What is the primary function of an operating system?",
+    question: "What is the primary function of a web browser?",
     options: [
-      "To run applications",
-      "To manage hardware resources",
-      "To browse the internet",
-      "To create documents"
+      "To create web pages",
+      "To display web pages",
+      "To host web servers",
+      "To manage network traffic"
     ],
     correctAnswer: 1
   },
   {
-    question: "Which of the following is not a programming paradigm?",
+    question: "Which protocol is used to transfer web pages on the internet?",
     options: [
-      "Object-Oriented Programming",
-      "Functional Programming",
-      "Imperative Programming",
-      "Alphabetical Programming"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What does HTML stand for?",
-    options: [
-      "Hyper Text Markup Language",
-      "High Tech Modern Language",
-      "Hyper Transfer Markup Language",
-      "Home Tool Markup Language"
-    ],
-    correctAnswer: 0
-  },
-  {
-    question: "Which of these is not a type of computer network?",
-    options: [
-      "LAN",
-      "WAN",
-      "MAN",
-      "TAN"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What is the purpose of a firewall in computer networks?",
-    options: [
-      "To prevent overheating",
-      "To increase internet speed",
-      "To block unauthorized access",
-      "To improve display resolution"
+      "FTP",
+      "SMTP",
+      "HTTP",
+      "SSH"
     ],
     correctAnswer: 2
   },
   {
-    question: "Which of the following is not a type of database?",
+    question: "What does URL stand for?",
     options: [
-      "Relational",
-      "NoSQL",
-      "Object-oriented",
-      "Linguistic"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What does API stand for in programming?",
-    options: [
-      "Advanced Programming Interface",
-      "Application Programming Interface",
-      "Automated Program Interaction",
-      "Advanced Program Integration"
+      "Universal Resource Locator",
+      "Uniform Resource Locator",
+      "Unified Resource Link",
+      "Universal Resource Link"
     ],
     correctAnswer: 1
+  },
+  {
+    question: "Which of these is not a valid HTTP method?",
+    options: [
+      "GET",
+      "POST",
+      "FETCH",
+      "DELETE"
+    ],
+    correctAnswer: 2
+  },
+  {
+    question: "What is the purpose of DNS in internet communication?",
+    options: [
+      "To encrypt data",
+      "To translate domain names to IP addresses",
+      "To manage email delivery",
+      "To compress web pages"
+    ],
+    correctAnswer: 1
+  },
+  {
+    question: "Which of the following is a top-level domain?",
+    options: [
+      ".com",
+      ".html",
+      ".http",
+      ".ftp"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "What does IP stand for in networking?",
+    options: [
+      "Internet Protocol",
+      "Internal Process",
+      "Internet Provider",
+      "Information Protocol"
+    ],
+    correctAnswer: 0
   }
 ]
 
@@ -127,7 +127,7 @@ export default function TechnologyQuiz() {
 
   const markQuizAsCompleted = () => {
     // Store the completion status in local storage
-    localStorage.setItem('computerBasicsCompleted', 'true')
+    localStorage.setItem('internetFundamentalsCompleted', 'true')
   }
 
   const handleBackToTechnology = () => {
