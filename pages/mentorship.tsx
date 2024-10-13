@@ -160,12 +160,12 @@ export default function MentorMatching() {
         <div className="flex items-center justify-center mb-12">
           <UserGroupIcon className="h-10 w-10 text-purple-400 mr-4" />
           <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 animate-glow">
-            Mentorship Matching
+            MentorShip
           </h1>
         </div>
 
         {/* Introduction Text */}
-        <h1 className="text-5xl font-bold text-center mb-8 bg-clip-text text-white animate-glow">
+        <h1 className="text-5xl font-bold text-center mb-8 bg-clip-text text-white animate-glow animate-bounce">
           Let's get to know you better!
         </h1>
 

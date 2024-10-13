@@ -213,8 +213,8 @@ export default function MentorDisplay() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <UserGroupIcon className="mx-auto h-16 w-16 text-purple-400 animate-pulse" />
-          <h1 className="mt-1 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-5xl leading-tight">
-            Mentorship Matching
+          <h1 className="mt-1 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 sm:text-5xl leading-tight">
+            Your Matches
           </h1>
         </div>
 

@@ -162,12 +162,15 @@ export default function ChatbotUI() {
       <div className="w-64 border-r border-purple-900/30">
         <ScrollArea className="h-full">
           <div className="p-4">
-            <button
-              onClick={handleGoHome}
-              className="w-full px-4 py-2 mb-4 text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors"
-            >
-              Back to Home
-            </button>
+          <button
+  onClick={handleGoHome}
+  className="relative inline-flex items-center justify-center p-[3px] mb-4 overflow-hidden text-lg font-medium text-white transition-all duration-200 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg group hover:from-purple-600 hover:to-blue-600 focus:ring-4 focus:ring-blue-300"
+>
+  <span className="absolute inset-0 bg-black rounded-lg transition-all duration-200 ease-out group-hover:bg-transparent"></span>
+  <span className="relative px-5 py-2 transition-colors duration-200 ease-in-out bg-black rounded-md group-hover:text-purple-400">
+    Back to Home
+  </span>
+</button>
             <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
               Topics
             </h2>
@@ -208,9 +211,12 @@ export default function ChatbotUI() {
 
       <div className="flex-1 flex flex-col">
         <div className="border-b border-purple-900/30 p-4">
+        <div className="flex items-center space-x-4">
           <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
             AI-Powered Chatbot
           </h1>
+          <img src="/chatbot.jpg" alt="Chatbot" className="w-12 h-12 object-cover" />
+          </div>
         </div>
         <ScrollArea className="flex-1 p-4">
           {messages.map((message, index) => (
