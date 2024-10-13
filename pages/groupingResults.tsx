@@ -1,10 +1,11 @@
 'use client'
 
 import '../app/globals.css'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ArrowLeftIcon, UserGroupIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 
 interface Member {
   id: number
@@ -16,35 +17,45 @@ interface Group {
   members: Member[]
 }
 
-// Sample data - in a real application, this would come from a database or API
-const groups: Group[] = [
-  {
-    id: 1,
-    members: [
-      { id: 1, name: "Alice Chen" },
-      { id: 2, name: "Bob Tan" },
-      { id: 3, name: "Charlie Lim" },
-    ]
-  },
-  {
-    id: 2,
-    members: [
-      { id: 4, name: "David Wong" },
-      { id: 5, name: "Eva Liu" },
-      { id: 6, name: "Frank Zhang" },
-    ]
-  },
-  {
-    id: 3,
-    members: [
-      { id: 7, name: "Grace Lee" },
-      { id: 8, name: "Henry Ng" },
-      { id: 9, name: "Ivy Teo" },
-    ]
-  },
-]
-
 export default function GroupingResults(): JSX.Element {
+  const [groups, setGroups] = useState<Group[]>([])
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const dataParam = searchParams?.get('data')
+    if (dataParam) {
+      const parsedData = JSON.parse(dataParam)
+      
+      if (parsedData.outputs && parsedData.outputs[0] && parsedData.outputs[0].outputs && parsedData.outputs[0].outputs[0].messages) {
+        const outputText = parsedData.outputs[0].outputs[0].messages[0].message
+        const parsedGroups = parseAIResponseIntoGroups(outputText)
+        setGroups(parsedGroups)
+      }
+    }
+  }, [searchParams])
+
+  function parseAIResponseIntoGroups(response: string): Group[] {
+    console.log('Parsing AI Response: ', response);
+    
+    const groupStrings = response.split('#').filter(str => str.trim() !== '');
+    
+    const parsedGroups: Group[] = groupStrings.map((groupString, groupIndex) => {
+      const [membersString] = groupString.split(':').map(str => str.trim());
+      const memberNames = membersString.split(',').map(name => name.trim()).filter(name => name !== '');
+      
+      return {
+        id: groupIndex + 1,
+        members: memberNames.map((name, memberIndex) => ({
+          id: memberIndex + 1,
+          name: name
+        }))
+      };
+    });
+
+    console.log('Parsed Groups: ', parsedGroups);
+    return parsedGroups;
+  }
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <div className="container mx-auto px-4 py-16 relative">
@@ -64,7 +75,7 @@ export default function GroupingResults(): JSX.Element {
               <div key={group.id} className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-6 shadow-lg backdrop-filter backdrop-blur-lg transition-all duration-300 hover:scale-105 animate-fadeInUp">
                 <div className="flex items-center mb-4">
                   <UserGroupIcon className="h-8 w-8 text-purple-400 mr-2" />
-                  <h2 className="text-2xl font-semibold">Group {group.id}</h2>
+                  <h2 className="text-2xl font-semibold">Crew {group.id}</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {group.members.map((member) => (
