@@ -45,8 +45,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     res.status(200).json(data)
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in API route:', error)
-    res.status(500).json({ error: 'Error processing your request', details: error.message })
-  }
+    res.status(500).json({ error: 'Error processing your request', details: error instanceof Error ? error.message : String(error) })
+  } 
 }

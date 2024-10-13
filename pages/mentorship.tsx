@@ -12,7 +12,9 @@ import {
   InputLabel,
   FormControl,
   CircularProgress,
+  SelectChangeEvent,
 } from "@mui/material";
+import { ReactNode } from "react";
 
 export default function MentorMatching() {
   const [relevantExp, setRelevantExperience] = useState("");
@@ -47,9 +49,10 @@ export default function MentorMatching() {
 
   // Handle dropdown (ethnicity) change
   const handleSelectChange = (
-    e: React.ChangeEvent<{ name?: string; value: unknown }>
+    event: SelectChangeEvent<string>,
+    child: ReactNode
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name as string]: value as string,
@@ -265,7 +268,7 @@ export default function MentorMatching() {
                   name="ethnicity"
                   value={formData.ethnicity}
                   label="Ethnicity"
-                  onChange={handleSelectChange as any}
+                  onChange={handleSelectChange}
                   sx={{
                     color: "white",
                     "& .MuiOutlinedInput-notchedOutline": {
