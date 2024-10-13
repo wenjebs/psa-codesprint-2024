@@ -265,7 +265,7 @@ export default function MentorMatching() {
                   name="ethnicity"
                   value={formData.ethnicity}
                   label="Ethnicity"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChange as any}
                   sx={{
                     color: "white",
                     "& .MuiOutlinedInput-notchedOutline": {
