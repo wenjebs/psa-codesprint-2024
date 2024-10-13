@@ -11,13 +11,20 @@ import { Textarea } from "@/components/ui/textarea";
 import "../app/globals.css";
 import { useRouter } from "next/router";
 
+// Define a type for the message
+type Message = {
+  role: string;
+  content: string;
+};
+
 export default function ChatbotUI() {
-  const [messages, setMessages] = useState([]);
+  // Initialize the state with the correct type
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [expandedTopic, setExpandedTopic] = useState(null);
+  const [expandedTopic, setExpandedTopic] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const fileInputRefs = useRef([]);
-  const messagesEndRef = useRef(null);
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -107,7 +114,10 @@ export default function ChatbotUI() {
   };
 
   const handleFileUpload = (topic: string, index: number) => {
-    fileInputRefs.current[index].click();
+    const inputElement = fileInputRefs.current[index];
+    if (inputElement) {
+      inputElement.click();
+    }
   };
 
   const handleFileChange = (
@@ -120,7 +130,7 @@ export default function ChatbotUI() {
     }
   };
 
-  const toggleTopic = (topicIndex) => {
+  const toggleTopic = (topicIndex: number) => {
     setExpandedTopic(expandedTopic === topicIndex ? null : topicIndex);
   };
 
@@ -192,7 +202,9 @@ export default function ChatbotUI() {
                   </Button>
                   <input
                     type="file"
-                    ref={(el) => (fileInputRefs.current[index] = el)}
+                    ref={(el) => {
+                      fileInputRefs.current[index] = el;
+                    }}
                     className="hidden"
                     onChange={(e) => handleFileChange(topic, e)}
                   />
@@ -205,11 +217,15 @@ export default function ChatbotUI() {
 
       <div className="flex-1 flex flex-col">
         <div className="border-b border-purple-900/30 p-4">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
-            AI-Powered Chatbot
-          </h1>
-          <img src="/chatbot.jpg" alt="Chatbot" className="w-12 h-12 object-cover" />
+          <div className="flex items-center space-x-4">
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+              AI-Powered Chatbot
+            </h1>
+            <img
+              src="/chatbot.jpg"
+              alt="Chatbot"
+              className="w-12 h-12 object-cover"
+            />
           </div>
         </div>
         <ScrollArea className="flex-1 p-4">
