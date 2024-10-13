@@ -14,6 +14,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .border-border {
+    border-color: var(--border); /* Custom border color using the variable */
+  }
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer base {
