@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { ShipIcon } from "lucide-react";
 
+
 /**
  * Main landing page component
  * @returns JSX.Element
