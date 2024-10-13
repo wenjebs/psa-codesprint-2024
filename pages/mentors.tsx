@@ -9,8 +9,9 @@ import {
 } from "@heroicons/react/24/outline";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import "../app/globals.css";
 import { useRouter } from "next/router";
+import { Button } from "@/components/ui/button";
+import "../app/globals.css";
 
 interface Mentor {
   id: string;
@@ -50,6 +51,11 @@ const SkillBar: React.FC<{ skill: string; value: string }> = ({
 
 const MentorCard: React.FC<{ mentor: Mentor }> = ({ mentor }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleContact = () => {
+    // Implement contact functionality here
+    alert(`Contacting ${mentor.name}`);
+  };
 
   return (
     <div
@@ -105,12 +111,20 @@ const MentorCard: React.FC<{ mentor: Mentor }> = ({ mentor }) => {
           <SkillBar skill="Leadership" value={mentor.leadership} />
         </div>
 
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-6 w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-2 px-4 rounded-full font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
-        >
-          {isExpanded ? "Show Less" : "Show More"}
-        </button>
+        <div className="flex space-x-2 mt-6">
+          <Button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-2 px-4 rounded-full font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+          >
+            {isExpanded ? "Show Less" : "Show More"}
+          </Button>
+          <Button
+            onClick={handleContact}
+            className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-2 px-4 rounded-full font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+          >
+            Contact Me
+          </Button>
+        </div>
 
         {isExpanded && (
           <div className="mt-6 space-y-4 animate-fadeIn">
