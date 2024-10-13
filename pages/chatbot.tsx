@@ -11,8 +11,6 @@ import { Textarea } from "@/components/ui/textarea";
 import "../app/globals.css";
 import { useRouter } from "next/router";
 
-
-
 export default function ChatbotUI() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -58,7 +56,6 @@ export default function ChatbotUI() {
               "Chroma-7xl8M": {},
               "Chroma-lQE7u": {},
               "GoogleGenerativeAIModel-cc2LS": {},
-              "NVIDIAEmbeddingsComponent-RFzbi": {},
             },
           }),
         });
@@ -161,16 +158,13 @@ export default function ChatbotUI() {
     <div className="flex h-screen bg-black text-white overflow-hidden">
       <div className="w-64 border-r border-purple-900/30">
         <ScrollArea className="h-full">
-          <div className="p-4">
-          <button
-  onClick={handleGoHome}
-  className="relative inline-flex items-center justify-center p-[3px] mb-4 overflow-hidden text-lg font-medium text-white transition-all duration-200 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg group hover:from-purple-600 hover:to-blue-600 focus:ring-4 focus:ring-blue-300"
->
-  <span className="absolute inset-0 bg-black rounded-lg transition-all duration-200 ease-out group-hover:bg-transparent"></span>
-  <span className="relative px-5 py-2 transition-colors duration-200 ease-in-out bg-black rounded-md group-hover:text-purple-400">
-    Back to Home
-  </span>
-</button>
+          <div className="p-4 flex flex-col h-full justify-between">
+            <button className="p-[3px] relative mb-5" onClick={handleGoHome}>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
+                Back to home!
+              </div>
+            </button>
             <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
               Topics
             </h2>

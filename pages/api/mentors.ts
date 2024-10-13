@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const response = await fetch("https://api.langflow.astra.datastax.com/lf/28ca1e5c-12d4-4ec8-8652-1860f02b288d/api/v1/run/745aa2e4-0e5c-439b-8009-63275b4f02cf?stream=false", {
+      const response = await fetch("https://api.langflow.astra.datastax.com/lf/5b6e17c0-8fea-4c9f-9d0f-4fbe2d4890a1/api/v1/run/15da7b76-6a86-4ab0-9ec0-fd1bda124ad7?stream=false", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
