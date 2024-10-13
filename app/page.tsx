@@ -82,7 +82,7 @@ export default function Home() {
               icon={<ShipIcon className="h-8 w-8 text-purple-400" />}
             />
             <FeaturePhoto
-              title="AnchorUp"
+              title="Bo-men Boost"
               description="Career Guidance & Upskilling: What's next for you?"
               imageSrc="/career-guidance.jpg"
               link="/career"
