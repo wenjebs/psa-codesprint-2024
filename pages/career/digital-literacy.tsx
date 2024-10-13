@@ -1,84 +1,84 @@
 'use client'
 
-import { useState, useEffect } from "react";
-import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
-import confetti from "canvas-confetti";
-import { useRouter } from "next/router";
-import "../../app/globals.css";
-import React from "react";
+import { useState, useEffect } from 'react'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import confetti from 'canvas-confetti'
+import { useRouter } from 'next/router'
+import '../../app/globals.css'
+import React from 'react'
 
 // Simulated AI-generated questions
 const quizQuestions = [
-  {
-    question: "What is the primary function of an operating system?",
-    options: [
-      "To run applications",
-      "To manage hardware resources",
-      "To browse the internet",
-      "To create documents"
-    ],
-    correctAnswer: 1
-  },
-  {
-    question: "Which of the following is not a programming paradigm?",
-    options: [
-      "Object-Oriented Programming",
-      "Functional Programming",
-      "Imperative Programming",
-      "Alphabetical Programming"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What does HTML stand for?",
-    options: [
-      "Hyper Text Markup Language",
-      "High Tech Modern Language",
-      "Hyper Transfer Markup Language",
-      "Home Tool Markup Language"
-    ],
-    correctAnswer: 0
-  },
-  {
-    question: "Which of these is not a type of computer network?",
-    options: [
-      "LAN",
-      "WAN",
-      "MAN",
-      "TAN"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What is the purpose of a firewall in computer networks?",
-    options: [
-      "To prevent overheating",
-      "To increase internet speed",
-      "To block unauthorized access",
-      "To improve display resolution"
-    ],
-    correctAnswer: 2
-  },
-  {
-    question: "Which of the following is not a type of database?",
-    options: [
-      "Relational",
-      "NoSQL",
-      "Object-oriented",
-      "Linguistic"
-    ],
-    correctAnswer: 3
-  },
-  {
-    question: "What does API stand for in programming?",
-    options: [
-      "Advanced Programming Interface",
-      "Application Programming Interface",
-      "Automated Program Interaction",
-      "Advanced Program Integration"
-    ],
-    correctAnswer: 1
-  }
+    {
+        question: "What is digital literacy?",
+        options: [
+          "The ability to read and write digital content",
+          "The ability to use digital technology and communication tools",
+          "The ability to create digital art",
+          "The ability to repair digital devices"
+        ],
+        correctAnswer: 1
+      },
+      {
+        question: "Which of the following is a key component of digital literacy?",
+        options: [
+          "Understanding how to use social media",
+          "Knowing how to code in multiple languages",
+          "Being able to evaluate online information critically",
+          "Being able to build a computer"
+        ],
+        correctAnswer: 2
+      },
+      {
+        question: "What does 'netiquette' refer to?",
+        options: [
+          "The etiquette of using the internet",
+          "The speed of an internet connection",
+          "The security of online transactions",
+          "The design of a website"
+        ],
+        correctAnswer: 0
+      },
+      {
+        question: "Which of these is a sign of a phishing attempt?",
+        options: [
+          "An email from a known contact",
+          "A request for personal information from an unknown source",
+          "A secure website with HTTPS",
+          "A well-designed company logo"
+        ],
+        correctAnswer: 1
+      },
+      {
+        question: "What is the purpose of a strong password?",
+        options: [
+          "To make it easy to remember",
+          "To protect against unauthorized access",
+          "To share with friends",
+          "To use the same password everywhere"
+        ],
+        correctAnswer: 1
+      },
+      {
+        question: "Which of the following is a benefit of cloud computing?",
+        options: [
+          "Increased hardware costs",
+          "Limited access to data",
+          "Scalability and flexibility",
+          "Reduced internet speed"
+        ],
+        correctAnswer: 2
+      },
+      {
+        question: "What is a digital footprint?",
+        options: [
+          "The physical space a computer occupies",
+          "The trail of data you leave online",
+          "The size of a digital file",
+          "The speed of a digital connection"
+        ],
+        correctAnswer: 1
+      }
 ]
 
 export default function TechnologyQuiz() {
@@ -127,7 +127,7 @@ export default function TechnologyQuiz() {
 
   const markQuizAsCompleted = () => {
     // Store the completion status in local storage
-    localStorage.setItem('computerBasicsCompleted', 'true')
+    localStorage.setItem('digitalLiteracyCompleted', 'true')
   }
 
   const handleBackToTechnology = () => {

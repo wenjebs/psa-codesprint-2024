@@ -73,8 +73,16 @@ export default function TechnologyProgression() {
   useEffect(() => {
     // Check local storage for completion status
     const isComputerBasicsCompleted = localStorage.getItem('computerBasicsCompleted') === 'true'
+    const isInternetFundamentalsCompleted = localStorage.getItem('internetFundamentalsCompleted') === 'true'
+    const isDigitalLiteracyCompleted = localStorage.getItem('digitalLiteracyCompleted') === 'true'
     if (isComputerBasicsCompleted) {
       handleCompleteSubtopic(1, 0) // Mark "Computer Basics" as completed
+    }
+    if (isInternetFundamentalsCompleted) {
+      handleCompleteSubtopic(1, 1) // Mark "Internet Fundamentals" as completed
+    }
+    if (isDigitalLiteracyCompleted) {
+      handleCompleteSubtopic(1, 2) // Mark "Digital Literacy" as completed
     }
   }, [])
 
@@ -114,6 +122,12 @@ export default function TechnologyProgression() {
   const handleSubtopicClick = (subtopic: string) => {
     if (subtopic === 'Computer Basics') {
       router.push('/career/computer-basics')
+    }
+    if (subtopic === 'Internet Fundamentals') {
+      router.push('/career/internet-fundamentals')
+    }
+    if (subtopic === 'Digital Literacy') {
+      router.push('/career/digital-literacy')
     }
   }
 
