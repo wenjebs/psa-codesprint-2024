@@ -11,8 +11,6 @@ import { Textarea } from "@/components/ui/textarea";
 import "../app/globals.css";
 import { useRouter } from "next/router";
 
-
-
 export default function ChatbotUI() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -160,12 +158,12 @@ export default function ChatbotUI() {
     <div className="flex h-screen bg-black text-white overflow-hidden">
       <div className="w-64 border-r border-purple-900/30">
         <ScrollArea className="h-full">
-          <div className="p-4">
-            <button
-              onClick={handleGoHome}
-              className="w-full px-4 py-2 mb-4 text-white bg-blue-500 rounded hover:bg-blue-600 transition-colors"
-            >
-              Back to Home
+          <div className="p-4 flex flex-col h-full justify-between">
+            <button className="p-[3px] relative mb-5" onClick={handleGoHome}>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
+                Back to home!
+              </div>
             </button>
             <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
               Topics
