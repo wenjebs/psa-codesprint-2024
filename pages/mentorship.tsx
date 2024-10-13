@@ -279,11 +279,11 @@ export default function MentorMatching() {
                     },
                   }}
                 >
-                  <MenuItem value="Asian">Asian</MenuItem>
-                  <MenuItem value="Black">Black</MenuItem>
+                  <MenuItem value="Chinese">Chinese</MenuItem>
+                  <MenuItem value="Malay">Malay</MenuItem>
+                  <MenuItem value="Indian">Indian</MenuItem>
                   <MenuItem value="Caucasian">Caucasian</MenuItem>
-                  <MenuItem value="Hispanic">Hispanic</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
+                  <MenuItem value="Others">Others</MenuItem>
                 </Select>
               </FormControl>
             </div>
