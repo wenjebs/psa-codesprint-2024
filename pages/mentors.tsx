@@ -140,7 +140,7 @@ const MentorCard: React.FC<{ mentor: Mentor }> = ({ mentor }) => {
 export default function MentorDisplay() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const message = searchParams.get("message");
+  const message = searchParams ? searchParams.get("message") : null;
   const [mentors, setMentors] = useState<Mentor[]>([]);
   const [debugInfo, setDebugInfo] = useState<string>("");
 
