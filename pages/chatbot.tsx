@@ -205,9 +205,12 @@ export default function ChatbotUI() {
 
       <div className="flex-1 flex flex-col">
         <div className="border-b border-purple-900/30 p-4">
+        <div className="flex items-center space-x-4">
           <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
             AI-Powered Chatbot
           </h1>
+          <img src="/chatbot.jpg" alt="Chatbot" className="w-12 h-12 object-cover" />
+          </div>
         </div>
         <ScrollArea className="flex-1 p-4">
           {messages.map((message, index) => (
