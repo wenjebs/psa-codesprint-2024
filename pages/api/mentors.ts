@@ -3,11 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const response = await fetch("https://api.langflow.astra.datastax.com/lf/5b6e17c0-8fea-4c9f-9d0f-4fbe2d4890a1/api/v1/run/15da7b76-6a86-4ab0-9ec0-fd1bda124ad7?stream=false", {
+      const response = await fetch("https://api.langflow.astra.datastax.com/lf/28ca1e5c-12d4-4ec8-8652-1860f02b288d/api/v1/run/745aa2e4-0e5c-439b-8009-63275b4f02cf?stream=false", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer AstraCS:xGEWCpqxQwFPijLUGoldFSaF:d2a8e104d7c8a6dfe62aa18090190631a3b05913c6f96d8fcfa5d40c2883f155'
+          'Authorization': 'Bearer AstraCS:liSYYZDnIOjZNOGlpUTGGFJT:03b260283b31142a2dbed83d83299aa3980237c3fa079bd847666b748423399c'
         },
         body: JSON.stringify(req.body)
       });

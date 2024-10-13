@@ -111,7 +111,7 @@ export default function MentorMatching() {
         },
         body: JSON.stringify(payload),
       });
-
+      console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -132,22 +132,26 @@ export default function MentorMatching() {
   if (isLoading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
-      <div className="relative p-8 bg-gradient-to-r from-purple-900 to-indigo-900 rounded-3xl shadow-2xl text-center overflow-hidden w-96 h-96 flex flex-col justify-center items-center">
-        <div className="absolute inset-0 bg-grid-white/[0.05] animate-pulse rounded-3xl"></div>
-        <div className="relative z-10">
-          <CircularProgress size="large" className="text-purple-400 mb-6" />
-          <h2 className="text-2xl font-bold text-white mb-2">Finding Your Perfect Mentor Match</h2>
-          <p className="text-purple-200 mb-4">Please wait while we analyze your profile...</p>
-          <div className="flex justify-center space-x-2">
-            <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-            <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-            <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce"></span>
+        <div className="relative p-8 bg-gradient-to-r from-purple-900 to-indigo-900 rounded-3xl shadow-2xl text-center overflow-hidden w-96 h-96 flex flex-col justify-center items-center">
+          <div className="absolute inset-0 bg-grid-white/[0.05] animate-pulse rounded-3xl"></div>
+          <div className="relative z-10">
+            <CircularProgress size="large" className="text-purple-400 mb-6" />
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Finding Your Perfect Mentor Match
+            </h2>
+            <p className="text-purple-200 mb-4">
+              Please wait while we analyze your profile...
+            </p>
+            <div className="flex justify-center space-x-2">
+              <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+              <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+              <span className="w-3 h-3 bg-purple-400 rounded-full animate-bounce"></span>
+            </div>
           </div>
+          <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+          <div className="absolute -top-16 -right-16 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
         </div>
-        <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-        <div className="absolute -top-16 -right-16 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
       </div>
-    </div>
     );
   }
 
