@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
             title="Team Matching"
             description="Build your ideal team with AI"
             icon={<RocketLaunchIcon className="h-8 w-8 text-blue-400" />}
-            link="/team-matching"
+            link="/createTeam"
           />
           <FeatureCard
             title="PortPal"
