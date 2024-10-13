@@ -57,7 +57,6 @@ export default function ChatbotUI() {
               "Chroma-7xl8M": {},
               "Chroma-lQE7u": {},
               "GoogleGenerativeAIModel-cc2LS": {},
-              "NVIDIAEmbeddingsComponent-RFzbi": {},
             },
           }),
         });

@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer AstraCS:iyZZnkhwmbZfFlTZUbvRpfmE:cb7428783f843bc732607b1058fcc6f5fc16759af3ec1f3c37d003eb9152167b'
+          'Authorization': 'Bearer AstraCS:PbkGKXHPAbTnyeLSbWcmBEfa:1759a57ee6e538e9c2115be94ae8f7121da75584786dd90575a2d764c453fbec'
         },
         body: JSON.stringify(req.body)
       });
