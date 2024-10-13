@@ -11,7 +11,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 
 export async function generateContent() {
   try {
-    const prompt = "Generate me 10 multiple choice questions about possible skills that need improvement for an employee in Port of Singapore Authority to measure their capabilities in various skills. The skills are technology, safety, leadership, working under pressure, data analysis, trend analystics, maritime operations, cybersecurity, sustainability and artificial intelligence in that order each time. phrase all your questions such as How confident are you in (rest of question) Return me the questions in plain text separated by hashtag only. ask me variations of questions each time, dont include '**' for format and dont include a # at the end of the last question and dont provide me the options";
+    const prompt = "generate me a short 7 question true false question on Fundamentals of technology - Computer Basics separate each question with a #. "
     const result = await model.generateContent(prompt);
     const reponse = await result.response;
     console.log(result.response.text());

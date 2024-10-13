@@ -4,6 +4,7 @@ import React from "react"
 import { useState, useEffect } from 'react'
 import { ArrowRightIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 import '../../app/globals.css'
+import { useRouter } from 'next/router'
 
 const technologyTopics = [
   {
@@ -61,11 +62,20 @@ export default function TechnologyProgression() {
   const [topics, setTopics] = useState(technologyTopics)
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [scrollY, setScrollY] = useState(0)
+  const router = useRouter() 
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    // Check local storage for completion status
+    const isComputerBasicsCompleted = localStorage.getItem('computerBasicsCompleted') === 'true'
+    if (isComputerBasicsCompleted) {
+      handleCompleteSubtopic(1, 0) // Mark "Computer Basics" as completed
+    }
   }, [])
 
   const handleTopicClick = (topic) => {
@@ -99,6 +109,12 @@ export default function TechnologyProgression() {
     height: `${Math.max(100 - scrollY / 5, 0)}vh`,
     opacity: Math.max(1 - scrollY / 500, 0),
     transform: `translateY(-${Math.min(scrollY / 2, 50)}px)`,
+  }
+
+  const handleSubtopicClick = (subtopic: string) => {
+    if (subtopic === 'Computer Basics') {
+      router.push('/career/computer-basics')
+    }
   }
 
   return (
@@ -174,11 +190,11 @@ export default function TechnologyProgression() {
                       {subtopic.includes('(Completed)') ? (
                         <CheckCircleIcon className="h-5 w-5 text-green-400 ml-auto" />
                       ) : (
-                        <button
-                          onClick={() => handleCompleteSubtopic(selectedTopic.id, index)}
-                          className="ml-auto px-2 py-1 text-sm bg-purple-500 hover:bg-purple-600 rounded transition-colors duration-200"
+            <button
+              onClick={() => handleSubtopicClick(subtopic)} // Use the new handler
+              className="ml-auto px-2 py-1 text-sm bg-purple-500 hover:bg-purple-600 rounded transition-colors duration-200"
                         >
-                          Complete
+                          Take Quiz
                         </button>
                       )}
                     </li>

@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Any custom styles should come after the Tailwind directives */
 
 /* Custom styles */
@@ -14,10 +15,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-.transition-max-height {
-  transition: max-height 0.3s ease-in-out;
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer base {
@@ -84,5 +90,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-

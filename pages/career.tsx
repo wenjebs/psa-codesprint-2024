@@ -1,20 +1,19 @@
 'use client'
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import '../app/globals.css'
+import { Skeleton } from '@/components/ui/skeleton'
 import { generateContent } from '../questions-generator'
-import { Skeleton } from '../components/ui/skeleton'
+import '../app/globals.css'
 
 const skills = [
   { name: 'Technology', icon: '💻', description: 'Learn about the latest tech trends and tools' },
-  { name: 'People Management', icon: '👥', description: 'Develop leadership and team management skills' },
-  { name: 'Food Safety', icon: '🍽️', description: 'Understand food safety regulations and best practices' },
-  { name: 'Photography', icon: '📷', description: 'Master the art of capturing stunning images' },
+  { name: 'Safety', icon: '🚨', description: 'Learn about safety regulations and best practices' },
+  { name: 'Leadership', icon: '👥', description: 'Develop leadership and team management skills' },
+  { name: 'Stress Management', icon: '🔥', description: 'Learn to work well under stressful conditions' },
   { name: 'Data Analysis', icon: '📊', description: 'Learn to interpret and visualize complex data' },
-  { name: 'Project Management', icon: '📅', description: 'Efficiently plan and execute projects' },
+  { name: 'Trend Analysis', icon: '📈', description: 'Effectively analyze trends and make data-driven decisions' },
   { name: 'Maritime Operations', icon: '🚢', description: 'Explore the intricacies of port operations' },
   { name: 'Cybersecurity', icon: '🔒', description: 'Protect digital assets from cyber threats' },
   { name: 'Sustainability', icon: '🌱', description: 'Implement eco-friendly practices in operations' },
@@ -30,7 +29,7 @@ const leaderboard = [
   { name: 'Sarah Wang', points: 1000 },
   { name: 'David Tan', points: 950 },
   { name: 'Lisa Chen', points: 900 },
-  { name: 'Tom Wilson', points: 850 },
+  { name: <span style={{ color: "green" }}>You</span>, points: 850 },
   { name: 'Grace Lim', points: 800 },
   { name: 'Ryan Ng', points: 750 },
   { name: 'Olivia Goh', points: 700 },
@@ -38,13 +37,8 @@ const leaderboard = [
   { name: 'Sophia Koh', points: 600 },
   { name: 'Daniel Lau', points: 550 },
 ]
-// const fetchQuestions = async () => {
-//   const response = await fetch('/questions-generator.js');
-//   return response;
-// } 
 
 const defaultOptions = ["Very confident", "Confident", "Somewhat confident", "Not confident"];
-
 
 export default function CareerGuidance() {
   const [scrollY, setScrollY] = useState(0)
@@ -56,7 +50,8 @@ export default function CareerGuidance() {
   const [answers, setAnswers] = useState<string[]>([])
   const [recommendation, setRecommendation] = useState('')
   const [questions, setQuestions] = useState<{ question: string; options: string[] }[]>([]);
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false);
+  const [weaknesses, setWeaknesses] = useState<string[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -69,7 +64,7 @@ export default function CareerGuidance() {
   }
 
   const handleStartQuestionnaire = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     setShowQuestionnaire(true);
     try {
       const questionStrings: string[] = await generateContent();
@@ -81,7 +76,7 @@ export default function CareerGuidance() {
     } catch (error) {
       console.error("Error loading questions:", error);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   }
 
@@ -99,17 +94,19 @@ export default function CareerGuidance() {
   }
 
   const generateRecommendation = (answers: string[]) => {
-    const weaknesses = answers.reduce<string[]>((acc, answer, index) => {
+    const newWeaknesses = answers.reduce<string[]>((acc, answer, index) => {
       if (answer === "Not confident" || answer === "Somewhat confident") {
         acc.push(skills[index % skills.length].name)
       }
       return acc
     }, [])
 
-    if (weaknesses.length === 0) {
+    setWeaknesses(newWeaknesses)
+
+    if (newWeaknesses.length === 0) {
       return "Great job! You seem to have a strong skill set. Consider advancing your knowledge in areas you're most passionate about."
     } else {
-      return `Based on your answers, we recommend focusing on improving your skills in: ${weaknesses.join(", ")}. Check out our courses in these areas to boost your career potential.`
+      return `Based on your answers, we recommend focusing on improving your skills in: ${newWeaknesses.join(", ")}. Check out our courses in these areas to boost your career potential.`
     }
   }
 
@@ -135,8 +132,8 @@ export default function CareerGuidance() {
             <h2 className="text-3xl font-semibold mb-6 text-purple-300">Skill Assessment</h2>
             {!showQuestionnaire && !recommendation && (
               <button
-              onClick={handleStartQuestionnaire}
-              className="mb-10 bg-purple-600 from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group font-bold"
+                onClick={handleStartQuestionnaire}
+                className="mb-10 bg-purple-600 from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group font-bold"
               >
                 Start Skill Assessment
               </button>
@@ -152,9 +149,9 @@ export default function CareerGuidance() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {questions[currentQuestion].options.map((option, index) => (
                     <button
-                    key={index}
-                    onClick={() => handleAnswer(option)}
-                    className="skill-card bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/20 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group"
+                      key={index}
+                      onClick={() => handleAnswer(option)}
+                      className="skill-card bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/20 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group"
                     >
                       {option}
                     </button>
@@ -175,7 +172,8 @@ export default function CareerGuidance() {
                 <button
                   key={index}
                   onClick={() => handleSkillClick(skill)}
-                  className="skill-card bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/20 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group"
+                  className={`skill-card bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-xl p-4 text-left transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/20 focus:outline-none focus:ring-2 focus:ring-purple-500 relative z-10 overflow-hidden group
+                    ${weaknesses.includes(skill.name) ? 'animate-glow bg-gradient-to-br from-purple-900/30 to-red-900/30' : ''}`}
                 >
                   <span className="text-4xl mb-2 block transition-transform duration-300 group-hover:scale-110">{skill.icon}</span>
                   <span className="text-lg font-medium block mb-2 transition-opacity duration-300 group-hover:opacity-0">{skill.name}</span>

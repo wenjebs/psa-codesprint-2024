@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Collapsible,
@@ -11,6 +10,8 @@ import { ChevronDown, Upload, MessageSquare, Loader } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import "../app/globals.css";
 import { useRouter } from "next/router";
+
+
 
 export default function ChatbotUI() {
   const [messages, setMessages] = useState([]);
